@@ -4,12 +4,9 @@ component MediaQueryListener {
 
   fun componentDidMount {
 
-    Window.addMediaQueryListener(
-      "(max-width: 800px)",
-      (matches: Bool) {
-        next {windowIsWide: !matches}
-      }
-    )
+    Window.addMediaQueryListener("(max-width: 800px)", (matches: Bool) {
+      next {windowIsWide: !matches}
+    })
   }
 
   fun render {

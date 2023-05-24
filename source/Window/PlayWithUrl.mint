@@ -11,9 +11,7 @@ component PlayWithUrl {
   }
 
   fun reset {
-    update(
-      "http://helloworld.com:3000/lorem/ipsum?foo=1&bar=baz#quux"
-    )
+    update("http://helloworld.com:3000/path?search=foo#hash")
   }
 
   fun changed (event: Html.Event) {
