@@ -1,6 +1,6 @@
 # Mint API Examples
 
-WORK IN PROGRESS.
+(Work in progress)
 
 These are (unofficial) examples for the [API](https://github.com/mint-lang/mint/tree/master/core/source) of [Mint](https://mint-lang.com/). The goal is to cover the whole API.
 
