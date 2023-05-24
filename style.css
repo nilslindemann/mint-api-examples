@@ -1,0 +1,105 @@
+@layer basics {
+  html, body {
+    margin:0;
+    padding:0;
+  }
+
+  body {
+    padding: 1em;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer text-elements {
+
+  .tbd {
+    font-size:0.8em;
+    color:grey;
+    font-style:italic;
+  }
+
+  .tbd::before {
+    content: "TBD: ";
+  }
+
+  #top {
+    position:absolute;
+    top:0;
+  }
+
+
+  a {
+    text-decoration: none;
+    color:blue;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+
+  table {
+    border-collapse: collapse;
+  }
+
+  /* tr {
+    border-top:1px solid silver;
+  }
+
+  tr:first-child {
+    border-top:0;
+  }
+
+  tr:first-child td {
+    padding-top: 0;
+  } */
+
+  td {
+    /* padding: 0.5em 0 0.5em 0.5em; */
+    padding: 0 0 0 1em;
+  }
+
+  td:first-child {
+    padding-left: 0;
+  }
+
+}
+
+@layer colors {
+  green {
+    color:green;
+  }
+
+  red {
+    color:red;
+  }
+}
+
+@layer isles {
+
+  section {
+    border:1px solid silver;
+    padding: 2em;
+    margin-top:2em;
+  }
+  section section {
+    border:0;
+    border-top:1px solid silver;
+    padding: 0;
+    padding-top: 2em;
+    margin-top: 2em;
+  }
+
+  section > *:last-child {
+    margin-bottom:0;
+    padding-bottom: 0;
+  }
+
+  section > *:first-child {
+    margin-top:0;
+    padding-top: 0;
+  }
+
+}
