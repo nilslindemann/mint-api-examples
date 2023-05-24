@@ -1,0 +1,13 @@
+{
+  "application": {
+    "title": "Mint API Examples"
+  },
+  "source-directories": [
+    "source"
+  ],
+  "external": {
+    "stylesheets": [
+      "style.css"
+    ]
+  }
+}
