@@ -11,6 +11,7 @@ component WindowIndex {
         <PlayWithUrl/>
         <WindowUrl/>
         <ActiveUrl/>
+        <Dimensions/>
         <WindowTBD/>
 
     </section>
