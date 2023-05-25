@@ -11,4 +11,4 @@ These are (unofficial) examples for the [Mint Language](https://mint-lang.com/).
 
 I check the code against [the latest compiler](https://mint-lang.com/install), and I use the latest language features.
 
-This folder is a mint project. Run `mint start` inside and then open http://127.0.0.1:3000/ in your browser.
+This folder is a [mint project](https://mint-lang.com/guide/getting-started/using-the-cli). Run `mint start` inside and then open http://127.0.0.1:3000/ in your browser.
