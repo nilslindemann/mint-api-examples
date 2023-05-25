@@ -28,7 +28,6 @@ component WindowTBD {
   fun render {
     <section>
       <h3>"To be done"</h3>
-      <p><em>"Add examples for 'Dimensions', 'Scrolling'. Find good example for Window.matchesMediaQuery(), probably merge it with 'Listen to media query changes'"</em></p>
       <table>
         <tr>
           <td>
@@ -38,7 +37,6 @@ component WindowTBD {
         </tr>
 
         <{ row("Window.getScrollbarWidth()", A::Num(Window.getScrollbarWidth())) }>
-        <{ row("Window.matchesMediaQuery(\"(max-width: 1000px)\")", A::Bool(Window.matchesMediaQuery("(max-width: 1000px)")), "") }>
 
       </table>
     </section>

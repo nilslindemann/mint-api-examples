@@ -7,6 +7,7 @@ component WindowIndex {
         <AlertConfirmPrompt/>
         <AddRemoveListener/>
         <MediaQueryListener/>
+        <MediaQueryCheck/>
         <WindowTitle/>
         <PlayWithUrl/>
         <WindowUrl/>
