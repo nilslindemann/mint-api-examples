@@ -20,6 +20,9 @@ component MediaQueryListener {
           "The window is " <red>"less"</red> " than 800px wide"
         </p>
       }
+
+      <MediaQueryCheck/>
+
     </section>
   }
 

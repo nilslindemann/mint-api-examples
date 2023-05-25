@@ -1,29 +1,6 @@
-@layer basics {
-  html, body {
-    margin:0;
-    padding:0;
-  }
+@layer block-elements {
 
-  body {
-    padding: 1em;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-}
-
-@layer text-elements {
-
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-
-  table {
+  /* table {
     border-collapse: collapse;
   }
 
@@ -33,6 +10,10 @@
 
   td:first-child {
     padding-left: 0;
+  } */
+
+  section {
+    margin: 2em;
   }
 
 }
@@ -41,19 +22,14 @@
 
   .tbd {
     font-size:0.8em;
-    color:grey;
     font-style:italic;
   }
 
   .tbd::before {
-    content: "TBD: ";
+    content: "To be done: ";
   }
 
-  #top {
-    position:absolute;
-    top:0;
-  }
-
+  /* Whatever, validator */
   green {
     color:green;
   }
@@ -61,31 +37,4 @@
   red {
     color:red;
   }
-}
-
-@layer isles {
-
-  section {
-    border:1px solid silver;
-    padding: 2em;
-    margin-top:2em;
-  }
-  section section {
-    border:0;
-    border-top:1px solid silver;
-    padding: 0;
-    padding-top: 2em;
-    margin-top: 2em;
-  }
-
-  section > *:last-child {
-    margin-bottom:0;
-    padding-bottom: 0;
-  }
-
-  section > *:first-child {
-    margin-top:0;
-    padding-top: 0;
-  }
-
 }

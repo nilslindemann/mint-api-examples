@@ -16,7 +16,7 @@ component MediaQueryCheck {
 
   fun render {
     <section>
-      <h3>"Check media query manually"</h3>
+      <h4>"Check manually"</h4>
       <p>
         <button onclick={check}>"Check"</button>
         case isWide {

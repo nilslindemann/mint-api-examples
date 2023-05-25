@@ -30,7 +30,7 @@ component AddRemoveListener {
 
   fun render {
     <section>
-      <h3>"Add / remove listener"</h3>
+      <h3>"Add / Remove listener"</h3>
       <button onclick={toggleHandler}><{buttonText}></button>
       <p>"The window was clicked #{clickAmount |> Number.toString } times"</p>
     </section>

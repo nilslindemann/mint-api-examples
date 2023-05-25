@@ -23,7 +23,7 @@ component WindowTitle {
 
   fun render : Html {
     <section>
-      <h3>"Read / set window title"</h3>
+      <h3>"Read / Set window title"</h3>
       <p>"(See the text in the window tab)"</p>
       <p>
         <input

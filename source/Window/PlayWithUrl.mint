@@ -30,7 +30,7 @@ component PlayWithUrl {
 
   fun render : Html {
     <section>
-      <h3>"Play with URL"</h3>
+      <h3>"Play with an URL"</h3>
       <p>
         <label>"URL: "</label>
         <input

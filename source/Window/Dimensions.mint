@@ -66,6 +66,10 @@ component Dimensions {
         </a>
         ", open the Dev Tools (" <kbd>"F12"</kbd> ")."
       </small></p>
+      <p>
+        "Related: Scrollbar width: "
+        <{ Window.getScrollbarWidth() |> Number.toString() }> "px."
+      </p>
     </section>
   }
 }
