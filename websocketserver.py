@@ -27,7 +27,7 @@ async def send(conn, action, data):
   }))
 
 async def server_messages():
-  # This is the place where you do serverside stuff and send messages to the connected clients, if needed.
+  # This is the place where we do serverside stuff and send messages to the connected clients, if needed.
   global COUNTER
   while True:
     await asyncio.sleep(2)
@@ -48,7 +48,7 @@ async def handle_connection(conn):
     await broadcast(CONNS, "amount_conns", len(CONNS))
     await send(conn, "counter", COUNTER)
     async for message in conn:
-      # this is the place where you handle messages sent by a connected client
+      # this is the place where we handle messages sent by a connected client. This is done indepently for each client.
       action, data = parse(message)
       match action:
         case "update_counter":
@@ -67,9 +67,6 @@ async def main():
     server_messages(),
     user_messages()
   )
-# async def main():
-#   async with user_messages():
-#     await asyncio.Future()
 
 if __name__ == "__main__":
   print(f'Listening on ws://localhost:{PORT}/')
