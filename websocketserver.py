@@ -46,7 +46,7 @@ async def handle_connection(user):
   try:
     USERS.add(user)
     await broadcast(USERS, len(USERS), "amount_users")
-    await send(user, "counter", COUNTER)
+    await send(user, COUNTER, "counter")
     async for message in user:
       # this is the place where we handle messages sent by a connected client. This is done indepently for each client.
       data, desc = parse(message)
