@@ -1,5 +1,4 @@
 component WindowIndex {
-
   fun render {
     <section id="window">
       <h2>"Window"</h2>

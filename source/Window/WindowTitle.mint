@@ -3,21 +3,24 @@ component WindowTitle {
   state input = Maybe::Nothing
 
   fun componentDidMount {
-    next {input: Dom.getElementById("title-entry")}
+    next { input: Dom.getElementById("title-entry") }
   }
 
-  fun update (event: Html.Event) {
+  fun update (event : Html.Event) {
     Window.setTitle(Dom.getValue(event.target))
   }
 
   fun reset {
     Window.setTitle(title)
+
     case input {
-      Maybe::Nothing => {}
-      Maybe::Just(element) => {
-        Dom.setValue(element, title)
-        {}
-      }
+      Maybe::Nothing => { }
+
+      Maybe::Just(element) =>
+        {
+          Dom.setValue(element, title)
+          { }
+        }
     }
   }
 
@@ -25,15 +28,20 @@ component WindowTitle {
     <section>
       <h3>"Read / Set window title"</h3>
       <p>"(See the text in the window tab)"</p>
+
       <p>
         <input
-        id="title-entry"
-        value={title}
-        onChange={update}
-        type="text"/> " "
-        <button onclick={reset}>"Reset"</button>
+          id="title-entry"
+          value={title}
+          onChange={update}
+          type="text"/>
+
+        " "
+
+        <button onclick={reset}>
+          "Reset"
+        </button>
       </p>
     </section>
-
   }
 }
