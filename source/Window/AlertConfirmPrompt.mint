@@ -8,7 +8,7 @@ component AlertConfirmPrompt {
   }
 
   fun confirmSomething {
-    let choice = await Window.confirm("Want some Pizza?")
+    let choice = await Window.confirm("Want an apple?")
     let text = case choice {
       Result::Ok => "Nom Nom"
       Result::Err => "Not hungry"
