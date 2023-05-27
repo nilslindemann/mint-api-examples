@@ -1,10 +1,15 @@
-record ServerMessage {
+record TypedData {
   data : Number,
   desc : String
 }
 
-component Websocket {
+enum ServerMessage {
+  Counter(Number)
+  AmountUsers(Number)
+  Unknown
+}
 
+component Websocket {
   state isReady = false
   state counter = 0
   state amountUsers = 0
@@ -24,11 +29,11 @@ component Websocket {
       onError : (){ next {isReady: false} },
       onMessage : (raw: String) {
         let message = parseServerMessage(raw)
-        case message.desc {
-          "amount_users" =>
-            next { amountUsers: message.data }
-          "counter" =>
-            next {counter: message.data}
+        case message {
+          ServerMessage::AmountUsers(a) =>
+            next { amountUsers: a }
+          ServerMessage::Counter(c) =>
+            next {counter: c }
           =>
             next {}
         }
@@ -37,34 +42,33 @@ component Websocket {
   }
 
   fun parseServerMessage(raw: String): ServerMessage {
-    case Json.parse(raw) {
-      Result::Err => unknownMessage()
-      Result::Ok(object) =>
-        case decode object as ServerMessage {
-          Result::Err => unknownMessage()
-          Result::Ok(parsed) => parsed
-        }
+    let Result::Ok(syntax) =
+      Json.parse(raw) or return ServerMessage::Unknown
+    let Result::Ok(semantic) =
+      decode syntax as TypedData or return ServerMessage::Unknown
+    case semantic.desc {
+      "counter" => ServerMessage::Counter(semantic.data)
+      "amount_users" => ServerMessage::AmountUsers(semantic.data)
+      => ServerMessage::Unknown
     }
   }
 
-  fun unknownMessage {
-    { data: 0, desc: "unknown" }
+  fun send (websocket: WebSocket, data: Number, desc: String) {
+    WebSocket.send(
+      websocket,
+      (encode {
+        data: data,
+        desc: desc
+      })
+      |> Json.stringify())
   }
 
   fun addToCounter(num: Number) {
     case connection {
       Maybe::Nothing =>
         next {counter: counter + num}
-      Maybe::Just(websocket) => {
-        WebSocket.send(
-          websocket,
-          (encode {
-            data: num,
-            desc: "update_counter"
-          }) |> Json.stringify()
-        )
-        next {}
-      }
+      Maybe::Just(websocket) =>
+        send(websocket, num, "update_counter")
     }
   }
 
