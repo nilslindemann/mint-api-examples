@@ -1,17 +1,17 @@
 record Message {
-  action : String,
-  data : Number
+  data : Number,
+  desc : String
 }
 
 component Websocket {
 
   state isReady = false
   state counter = 0
-  state conns = 0
-  state websocket = Maybe::Nothing
+  state amountUsers = 0
+  state connection = Maybe::Nothing
 
   fun componentDidMount {
-    let ws = WebSocket.open({
+    let websocket = WebSocket.open({
       url: "ws://localhost:6789/",
       reconnectOnClose : true,
       onOpen : (w: WebSocket){ next {isReady: true} },
@@ -19,36 +19,36 @@ component Websocket {
       onError : (){ next {isReady: false} },
       onMessage : (json: String) {
         let message = case Json.parse(json) {
-          Result::Err => { action: "none", data: 0 }
+          Result::Err => { data: 0, desc: "none" }
           Result::Ok(object) =>
             case decode object as Message {
-              Result::Err => { action: "none", data: 0 }
-              Result::Ok(action) => action
+              Result::Err => { data: 0, desc: "none" }
+              Result::Ok(parsed) => parsed
             }
         }
-        case message.action {
-          "amount_conns_changed" =>
-            next { conns: message.data }
-          "counter_changed" =>
+        case message.desc {
+          "amount_users" =>
+            next { amountUsers: message.data }
+          "counter" =>
             next {counter: message.data}
           =>
             next {}
         }
       }
     })
-    next {websocket: Maybe::Just(ws)}
+    next {connection: Maybe::Just(websocket)}
   }
 
   fun addToCounter(num: Number) {
-    case websocket {
+    case connection {
       Maybe::Nothing =>
         next {counter: counter + num}
-      Maybe::Just(ws) => {
+      Maybe::Just(websocket) => {
         WebSocket.send(
-          ws,
+          websocket,
           (encode {
-            action: "update_counter",
-            data: num
+            data: num,
+            desc: "update_counter"
           }) |> Json.stringify()
         )
         next {}
@@ -67,9 +67,9 @@ component Websocket {
             <button onclick={(){addToCounter(1)}}>"+"</button>
           </div>
           <p>
-            <{ conns |> Number.toString() }>
+            <{ amountUsers |> Number.toString() }>
             " user"
-            if conns == 1 { "" } else { "s" }
+            if amountUsers == 1 { "" } else { "s" }
             " online"
           </p>
         </>

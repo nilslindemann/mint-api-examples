@@ -9,21 +9,21 @@ import websockets
 # See https://websockets.readthedocs.io/en/stable/howto/quickstart.html#manage-application-state.
 # I modified the code slightly, to also let the server indepently send messages to the clients, to denote the full duplex nature of Websockets.
 
-CONNS = set()
+USERS = set()
 COUNTER = 0
 
-async def broadcast(conns, action, data):
-  if conns:
+async def broadcast(users, data, desc):
+  if users:
     await asyncio.wait([
       asyncio.create_task(
-        send(conn, action, data)
-      ) for conn in conns
+        send(user, data, desc)
+      ) for user in users
     ])
 
-async def send(conn, action, data):
-  await conn.send(json.dumps({
-    "action": action,
-    "data": data
+async def send(user, data, desc):
+  await user.send(json.dumps({
+    "data": data,
+    "desc": desc
   }))
 
 async def server_messages():
@@ -32,33 +32,33 @@ async def server_messages():
   while True:
     await asyncio.sleep(2)
     COUNTER += 1
-    await broadcast(CONNS, "counter_changed", COUNTER)
+    await broadcast(USERS, COUNTER, "counter")
 
 def user_messages():
   return websockets.serve(handle_connection, "localhost", PORT)
 
-def parse(raw_message):
-  message = json.loads(raw_message)
-  return message["action"], message["data"]
+def parse(message):
+  info = json.loads(message)
+  return info["data"], info["desc"]
 
-async def handle_connection(conn):
-  global CONNS, COUNTER
+async def handle_connection(user):
+  global USERS, COUNTER
   try:
-    CONNS.add(conn)
-    await broadcast(CONNS, "amount_conns_changed", len(CONNS))
-    await send(conn, "counter_changed", COUNTER)
-    async for message in conn:
+    USERS.add(user)
+    await broadcast(USERS, len(USERS), "amount_users")
+    await send(user, "counter", COUNTER)
+    async for message in user:
       # this is the place where we handle messages sent by a connected client. This is done indepently for each client.
-      action, data = parse(message)
-      match action:
+      data, desc = parse(message)
+      match desc:
         case "update_counter":
           COUNTER = COUNTER + data
-          await broadcast(CONNS, "counter_changed", COUNTER)
+          await broadcast(USERS, COUNTER, "counter")
         case other:
-          print(f"unsupported action: {{{action}: {data}}}")
+          print(f"unsupported: \"{desc}\": {data}")
   finally:
-    CONNS.remove(conn)
-    await broadcast(CONNS, "amount_conns_changed", len(CONNS))
+    USERS.remove(user)
+    await broadcast(USERS, len(USERS), "amount_users")
 
 PORT = 6789
 
