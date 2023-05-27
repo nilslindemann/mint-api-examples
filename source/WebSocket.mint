@@ -1,4 +1,4 @@
-record Message {
+record ServerMessage {
   data : Number,
   desc : String
 }
@@ -11,21 +11,19 @@ component Websocket {
   state connection = Maybe::Nothing
 
   fun componentDidMount {
-    let websocket = WebSocket.open({
+    let websocket = createWebsocket()
+    next { connection: Maybe::Just(websocket) }
+  }
+
+  fun createWebsocket() {
+    WebSocket.open({
       url: "ws://localhost:6789/",
       reconnectOnClose : true,
       onOpen : (w: WebSocket){ next {isReady: true} },
       onClose : (){ next {isReady: false} },
       onError : (){ next {isReady: false} },
-      onMessage : (json: String) {
-        let message = case Json.parse(json) {
-          Result::Err => { data: 0, desc: "none" }
-          Result::Ok(object) =>
-            case decode object as Message {
-              Result::Err => { data: 0, desc: "none" }
-              Result::Ok(parsed) => parsed
-            }
-        }
+      onMessage : (raw: String) {
+        let message = parseServerMessage(raw)
         case message.desc {
           "amount_users" =>
             next { amountUsers: message.data }
@@ -36,7 +34,21 @@ component Websocket {
         }
       }
     })
-    next {connection: Maybe::Just(websocket)}
+  }
+
+  fun parseServerMessage(raw: String): ServerMessage {
+    case Json.parse(raw) {
+      Result::Err => unknownMessage()
+      Result::Ok(object) =>
+        case decode object as ServerMessage {
+          Result::Err => unknownMessage()
+          Result::Ok(parsed) => parsed
+        }
+    }
+  }
+
+  fun unknownMessage {
+    { data: 0, desc: "unknown" }
   }
 
   fun addToCounter(num: Number) {
