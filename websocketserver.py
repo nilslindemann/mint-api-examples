@@ -5,6 +5,9 @@ import json
 
 # `pip install websockets`
 import websockets
+#  The websockets docs are also the source for this code.
+# See https://websockets.readthedocs.io/en/stable/howto/quickstart.html#manage-application-state.
+# I modified the code slightly, to also let the server indepently send messages to the clients, to denote the full duplex nature of Websockets.
 
 CONNS = set()
 COUNTER = 0
