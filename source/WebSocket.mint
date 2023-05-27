@@ -27,9 +27,9 @@ component Websocket {
             }
         }
         case message.action {
-          "amount_conns" =>
+          "amount_conns_changed" =>
             next { conns: message.data }
-          "counter" =>
+          "counter_changed" =>
             next {counter: message.data}
           =>
             next {}

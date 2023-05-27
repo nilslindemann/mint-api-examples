@@ -32,7 +32,7 @@ async def server_messages():
   while True:
     await asyncio.sleep(2)
     COUNTER += 1
-    await broadcast(CONNS, "counter", COUNTER)
+    await broadcast(CONNS, "counter_changed", COUNTER)
 
 def user_messages():
   return websockets.serve(handle_connection, "localhost", PORT)
@@ -45,20 +45,20 @@ async def handle_connection(conn):
   global CONNS, COUNTER
   try:
     CONNS.add(conn)
-    await broadcast(CONNS, "amount_conns", len(CONNS))
-    await send(conn, "counter", COUNTER)
+    await broadcast(CONNS, "amount_conns_changed", len(CONNS))
+    await send(conn, "counter_changed", COUNTER)
     async for message in conn:
       # this is the place where we handle messages sent by a connected client. This is done indepently for each client.
       action, data = parse(message)
       match action:
         case "update_counter":
           COUNTER = COUNTER + data
-          await broadcast(CONNS, "counter", COUNTER)
+          await broadcast(CONNS, "counter_changed", COUNTER)
         case other:
           print(f"unsupported action: {{{action}: {data}}}")
   finally:
     CONNS.remove(conn)
-    await broadcast(CONNS, "amount_conns", len(CONNS))
+    await broadcast(CONNS, "amount_conns_changed", len(CONNS))
 
 PORT = 6789
 
