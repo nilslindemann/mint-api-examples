@@ -2,6 +2,8 @@
 
 import asyncio
 import json
+
+# `pip install websockets`
 import websockets
 
 CONNS = set()
