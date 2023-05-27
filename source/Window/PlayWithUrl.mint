@@ -36,9 +36,10 @@ component PlayWithUrl {
         <input
         type="text"
         id="url-entry"
-        style="width: calc(100% - 7em);"
+        style="width: calc(100% - 8em);"
         value={href}
         onChange={changed}/>
+        " "
         <button onclick={reset}>"Reset"</button>
       </p>
       <dl>

@@ -1,40 +1,48 @@
-@layer block-elements {
-
-  /* table {
-    border-collapse: collapse;
-  }
-
-  td {
-    padding: 0 0 0 1em;
-  }
-
-  td:first-child {
-    padding-left: 0;
-  } */
-
-  section {
-    margin: 2em;
-  }
-
+/* table {
+  border-collapse: collapse;
 }
 
-@layer special-elements {
+td {
+  padding: 0 0 0 1em;
+}
 
-  .tbd {
-    font-size:0.8em;
-    font-style:italic;
-  }
+td:first-child {
+  padding-left: 0;
+} */
 
-  .tbd::before {
-    content: "To be done: ";
-  }
+section {
+  margin: 2em;
+}
 
-  /* Whatever, validator */
-  green {
-    color:green;
-  }
+h2 {
+  margin-top:3em;
+}
 
-  red {
-    color:red;
-  }
+.to-be-done {
+  font-style:italic;
+}
+
+.to-be-done::before {
+  content: "To be done: ";
+}
+
+.important {
+  border:1px solid red;
+  padding:0.5em;
+  width: fit-content;
+}
+
+.green {
+  color:green;
+}
+
+.red {
+  color:red;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px 10px;
+  width: fit-content;
 }

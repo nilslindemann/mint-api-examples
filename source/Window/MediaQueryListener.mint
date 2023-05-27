@@ -13,11 +13,11 @@ component MediaQueryListener {
       <h3>"Listen to media query changes"</h3>
       if windowIsWide {
         <p>
-          "The window is " <green>"more"</green> " than 800px wide"
+          "The window is " <span class="green">"more"</span> " than 800px wide"
         </p>
       } else {
         <p>
-          "The window is " <red>"less"</red> " than 800px wide"
+          "The window is " <span class="red">"less"</span> " than 800px wide"
         </p>
       }
 

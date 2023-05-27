@@ -1,6 +1,6 @@
 store AppState {
 
-  state title = ""
+  state title = "nowhere"
 
   fun setTitle (newTitle: String) {
     next { title: newTitle }
@@ -8,7 +8,7 @@ store AppState {
 }
 
 routes {
-  / {
+  /here {
     AppState.setTitle("here")
   }
 
@@ -22,15 +22,11 @@ component Navigate {
   // https://mint-lang.com/guide/reference/components/connecting-stores
   connect AppState exposing { title, setTitle }
 
-  fun componentDidMount () {
-    Window.navigate("/")
-  }
-
   fun update () {
-    if title == "here" {
-      Window.navigate("/there")
+    if title != "here" {
+      Window.navigate("/here")
     } else {
-      Window.navigate("/")
+      Window.navigate("/there")
     }
   }
 
@@ -41,7 +37,7 @@ component Navigate {
 
         <p>
           <button onclick={update}>
-            if title == "here" {"go there"} else {"go back"}
+            if title != "here" {"go here"} else {"go there"}
           </button>
           " (Internal)"
         </p>

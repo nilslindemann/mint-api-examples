@@ -2,19 +2,19 @@ component WindowIndex {
 
   fun render {
     <section id="window">
-        <h2>"Window " </h2>
+      <h2>"Window"</h2>
 
-        <AlertConfirmPrompt/>
-        <AddRemoveListener/>
-        <MediaQueryListener/>
-        <WindowTitle/>
-        <PlayWithUrl/>
-        <WindowUrl/>
-        <ActiveUrl/>
-        <Dimensions/>
-        <Navigate/>
+      <AlertConfirmPrompt/>
+      <AddRemoveListener/>
+      <MediaQueryListener/>
+      <WindowTitle/>
+      <PlayWithUrl/>
+      <WindowUrl/>
+      <ActiveUrl/>
+      <Dimensions/>
+      <Navigate/>
 
-        <GoTop/>
+      <GoTop/>
     </section>
   }
 }

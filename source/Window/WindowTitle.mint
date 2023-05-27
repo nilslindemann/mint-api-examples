@@ -30,7 +30,7 @@ component WindowTitle {
         id="title-entry"
         value={title}
         onChange={update}
-        type="text"/>
+        type="text"/> " "
         <button onclick={reset}>"Reset"</button>
       </p>
     </section>

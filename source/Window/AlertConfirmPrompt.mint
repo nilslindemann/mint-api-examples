@@ -18,7 +18,7 @@ component AlertConfirmPrompt {
 
   fun promptSomething {
     let words = await Window.prompt("You say:")
-    let text = case (words) {
+    let text = case words {
       Maybe::Just(value) => "You said: \"" + value + "\""
       Maybe::Nothing => "You chanceled"
     }
@@ -29,12 +29,12 @@ component AlertConfirmPrompt {
     <section>
       <h3>"Alert, confirm, prompt"</h3>
       <p>
-        <button onclick={alertSomething}>"Alert something"</button>
-        <button onclick={confirmSomething}>"Confirm something"</button>
+        <button onclick={alertSomething}>"Alert something"</button> " "
+        <button onclick={confirmSomething}>"Confirm something"</button> " "
         <button onclick={promptSomething}>"Say something"</button>
       </p>
       <p><{infotext}></p>
-      <p class="tbd">"Why does pressing chancel in the confirm dialog not print \"Not hungry\"?"</p>
+      <span class="to-be-done">"Why does pressing chancel in the confirm dialog not print \"Not hungry\"?"</span>
     </section>
   }
 

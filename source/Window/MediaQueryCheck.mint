@@ -21,9 +21,9 @@ component MediaQueryCheck {
         <button onclick={check}>"Check"</button>
         case isWide {
           WinWidth::Wide =>
-            <> " The window is " <green>"more"</green> " than 800px wide" </>
+            <> " The window is " <span class="green">"more"</span> " than 800px wide" </>
           WinWidth::Narrow =>
-            <> " The window is " <red>"less"</red> " than 800px wide" </>
+            <> " The window is " <span class="red">"less"</span> " than 800px wide" </>
           =>
             <> "" </>
         }
