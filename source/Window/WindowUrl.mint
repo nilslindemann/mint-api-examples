@@ -1,22 +1,43 @@
 component WindowUrl {
 
   state url = Window.url()
-  // There is also `Window.href()` which returns the url as string
 
-  fun goto (hash: String) {
-    Window.navigate( hash )
+  fun seturlto (url: String) {
+    Window.setUrl( url )
+    next { url: Window.url() }
+  }
+
+  fun navigateto (url: String) {
+    Window.navigate( url )
+    next { url: Window.url() }
+  }
+
+  fun jumpto (url: String) {
+    Window.navigate( url )
     Window.triggerHashJump()
     next { url: Window.url() }
   }
 
   fun render : Html {
-    <section id="this-windows-url">
+    <section id="here">
       <h3>"This window's URL"</h3>
+
+      // Alternatively use `Window.href()`.
       <p><{url |> Url.toString()}></p>
-      <p>
-        <button onclick={(){goto("/#this-windows-url")}}>"Focus"</button>
-        <button onclick={(){goto("/")}}>"Go top"</button>
-      </p>
+
+      <div class="grid3">
+        <span>"Set URL to"</span>
+        <button onclick={(){ seturlto("#here") }}>"#here"</button>
+        <button onclick={(){ seturlto("/") }}>"/"</button>
+
+        <span>"Also update navigation history"</span>
+        <button onclick={(){ navigateto("#here") }}>"#here"</button>
+        <button onclick={(){ navigateto("/") }}>"/"</button>
+
+        <span>"Also jump there"</span>
+        <button onclick={(){ jumpto("#here") }}>"#here"</button>
+        <button onclick={(){ jumpto("/") }}>"/"</button>
+      </div>
     </section>
 
   }
