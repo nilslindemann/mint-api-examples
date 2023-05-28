@@ -40,9 +40,16 @@ h2 {
   color:red;
 }
 
-.grid3 {
+.grid3, .grid4 {
   display: grid;
-  grid-template-columns: repeat(3, auto);
   gap: 10px 10px;
   width: fit-content;
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, auto);
+}
+
+.grid4 {
+  grid-template-columns: repeat(4, auto);
 }

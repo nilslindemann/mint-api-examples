@@ -29,7 +29,7 @@ component WindowUrl {
         }>
       </p>
 
-      <div class="grid3">
+      <div class="grid4">
         <span>"Set URL to"</span>
 
         <button onclick={() { seturlto("#here") }}>
@@ -38,6 +38,10 @@ component WindowUrl {
 
         <button onclick={() { seturlto("/") }}>
           "/"
+        </button>
+
+        <button onclick={() { seturlto("/a/b/c") }}>
+          "/a/b/c"
         </button>
 
         <span>"Also update navigation history"</span>
@@ -50,6 +54,10 @@ component WindowUrl {
           "/"
         </button>
 
+        <button onclick={() { navigateto("/a/b/c") }}>
+          "/a/b/c"
+        </button>
+
         <span>"Also jump there"</span>
 
         <button onclick={() { jumpto("#here") }}>
@@ -58,6 +66,10 @@ component WindowUrl {
 
         <button onclick={() { jumpto("/") }}>
           "/"
+        </button>
+
+        <button onclick={() { jumpto("/a/b/c") }}>
+          "/a/b/c"
         </button>
       </div>
     </section>
