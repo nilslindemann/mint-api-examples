@@ -122,7 +122,7 @@ component UserServerCounter {
         </>
       } else {
         <p class="important">
-          "Can not establish a websocket connection. is "
+          "Can not establish a websocket connection. Is "
           <code>"websocketserver.py"</code>
           " running?"
         </p>
