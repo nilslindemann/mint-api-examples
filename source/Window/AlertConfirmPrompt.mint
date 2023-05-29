@@ -57,10 +57,6 @@ component AlertConfirmPrompt {
       <p>
         <{ infotext }>
       </p>
-
-      <span class="to-be-done">
-        "Why does pressing chancel in the confirm dialog not print \"Not hungry\"?"
-      </span>
     </section>
   }
 }
