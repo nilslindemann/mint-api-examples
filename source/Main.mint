@@ -13,7 +13,7 @@ component Main {
         "Window"
       </a>
 
-      <Websocket/>
+      <WebSocketIndex/>
       <WindowIndex/>
     </>
   }

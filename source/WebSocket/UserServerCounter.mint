@@ -9,7 +9,7 @@ enum ServerMessage {
   Unknown
 }
 
-component Websocket {
+component UserServerCounter {
   state isReady = false
   state counter = 0
   state amountUsers = 0
@@ -31,11 +31,8 @@ component Websocket {
         onClose: () { next { isReady: false } },
         onError: () { next { isReady: false } },
         onMessage:
-          (raw : String) {
-            let message =
-              parseServerMessage(raw)
-
-            case message {
+          (message : String) {
+            case parseMessage(message) {
               ServerMessage::AmountUsers(a) =>
                 next { amountUsers: a }
 
@@ -49,16 +46,16 @@ component Websocket {
       })
   }
 
-  fun parseServerMessage (raw : String) : ServerMessage {
-    let Result::Ok(syntax) =
-      Json.parse(raw) or return ServerMessage::Unknown
+  fun parseMessage (message : String) : ServerMessage {
+    let Result::Ok(message) =
+      Json.parse(message) or return ServerMessage::Unknown
 
-    let Result::Ok(semantic) =
-      decode syntax as TypedData or return ServerMessage::Unknown
+    let Result::Ok(message) =
+      decode message as TypedData or return ServerMessage::Unknown
 
-    case semantic.desc {
-      "counter" => ServerMessage::Counter(semantic.data)
-      "amount_users" => ServerMessage::AmountUsers(semantic.data)
+    case message.desc {
+      "counter" => ServerMessage::Counter(message.data)
+      "amount_users" => ServerMessage::AmountUsers(message.data)
       => ServerMessage::Unknown
     }
   }
@@ -84,8 +81,8 @@ component Websocket {
   }
 
   fun render {
-    <section id="websocket">
-      <h2>"WebSocket"</h2>
+    <section id="user-server-counter">
+      <h3>"User-Server-counter"</h3>
 
       if isReady {
         <>
@@ -130,8 +127,6 @@ component Websocket {
           " running?"
         </p>
       }
-
-      <GoTop/>
     </section>
   }
 }
