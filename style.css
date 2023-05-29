@@ -18,6 +18,10 @@ h2 {
   margin-top:3em;
 }
 
+button {
+  cursor: pointer;
+}
+
 .to-be-done {
   font-style:italic;
 }
