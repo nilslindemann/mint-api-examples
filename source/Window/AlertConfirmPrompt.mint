@@ -1,5 +1,5 @@
 component AlertConfirmPrompt {
-  state infotext = ""
+  state infotext = "Nothing clicked"
 
   fun alertSomething {
     await Window.alert("Hello World")
