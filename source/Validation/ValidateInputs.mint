@@ -8,12 +8,6 @@ component ValidateInputs {
 
   fun componentDidMount {
     submit()
-
-    Debug.log(
-      Number.fromString("0b101010"))
-
-    Debug.log(
-      Validation.isNotBlank("0b101010", {"favnumber", "Plase enter a number."}))
   }
 
   fun submit {
