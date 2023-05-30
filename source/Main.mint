@@ -3,6 +3,12 @@ component Main {
     <>
       <h1>"Mint API Examples"</h1>
 
+      <a href="#validation">
+        "Validation"
+      </a>
+
+      " | "
+
       <a href="#websocket">
         "WebSocket"
       </a>
@@ -13,6 +19,7 @@ component Main {
         "Window"
       </a>
 
+      <ValidationIndex/>
       <WebSocketIndex/>
       <WindowIndex/>
     </>
