@@ -128,15 +128,6 @@ component ValidateInputs {
           <span/>
         </p>
 
-        // <input
-
-        // name="submit"
-
-        // type="submit"
-
-        // value="Submit"
-
-        // onclick={submit}/>
         <button onclick={submit}>
           "Submit"
         </button>
