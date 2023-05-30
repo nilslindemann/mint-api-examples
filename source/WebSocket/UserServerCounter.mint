@@ -26,7 +26,7 @@ component UserServerCounter {
     WebSocket.open(
       {
         url: "ws://localhost:6789/",
-        reconnectOnClose: true,
+        reconnectOnClose: false,
         onOpen: (w : WebSocket) { next { isReady: true } },
         onClose: () { next { isReady: false } },
         onError: () { next { isReady: false } },
