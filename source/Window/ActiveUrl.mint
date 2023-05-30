@@ -49,11 +49,11 @@ component ActiveUrl {
         <td>
           <{
             if isActiveUrl {
-              <span class="green">
+              <span class="ok">
                 "Yes"
               </span>
             } else {
-              <span class="red">
+              <span class="error">
                 "No"
               </span>
             }

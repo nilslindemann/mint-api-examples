@@ -17,7 +17,7 @@ component MediaQueryListener {
         <p>
           "The window is "
 
-          <span class="green">
+          <span class="ok">
             "more"
           </span>
 
@@ -27,7 +27,7 @@ component MediaQueryListener {
         <p>
           "The window is "
 
-          <span class="red">
+          <span class="error">
             "less"
           </span>
 

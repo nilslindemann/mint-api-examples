@@ -33,7 +33,7 @@ component MediaQueryCheck {
             <>
               " The window is "
 
-              <span class="green">
+              <span class="ok">
                 "more"
               </span>
 
@@ -44,7 +44,7 @@ component MediaQueryCheck {
             <>
               " The window is "
 
-              <span class="red">
+              <span class="error">
                 "less"
               </span>
 

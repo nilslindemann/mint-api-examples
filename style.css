@@ -36,12 +36,12 @@ button {
   width: fit-content;
 }
 
-.green {
   color:green;
+.ok {
 }
 
-.red {
   color:red;
+.error {
 }
 
 .grid3, .grid4 {
