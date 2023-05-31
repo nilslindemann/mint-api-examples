@@ -40,7 +40,7 @@ component AddRemoveListener {
     <section>
       <h3>"Add / Remove listener"</h3>
 
-      <button onclick={toggleHandler}>
+      <button onClick={toggleHandler}>
         <{ buttonText }>
       </button>
 

@@ -1,7 +1,7 @@
 component ValidateInputs {
   state email : String = ""
   state zip : String = ""
-  state favnumber : String = ""
+  state favNumber : String = ""
   state password1 : String = ""
   state password2 : String = ""
   state errors : Map(String, Array(String)) = Map.empty()
@@ -22,8 +22,8 @@ component ValidateInputs {
               Validation.isNotBlank(zip, {"zip", "Please enter your zip code."}),
               Validation.isDigits(zip, {"zip", "The zip code can only contain digits."}),
               Validation.hasExactNumberOfCharacters(zip, 5, {"zip", "The zip code needs to have 5 digits."}),
-              Validation.isNotBlank(favnumber, {"favnumber", "Please enter your favorite number."}),
-              Validation.isNumber(favnumber, {"favnumber", "Please enter a number."}),
+              Validation.isNotBlank(favNumber, {"favNumber", "Please enter your favorite number."}),
+              Validation.isNumber(favNumber, {"favNumber", "Please enter a number."}),
               Validation.isNotBlank(password1, {"password1", "Please enter your password."}),
               Validation.isNotBlank(password2, {"password1", "Please enter your password twice."}),
               Validation.isSame(password1, password2, {"password1", "The passwords do no match"}),
@@ -45,7 +45,7 @@ component ValidateInputs {
     case name {
       "email" => next { email: value }
       "zip" => next { zip: value }
-      "favnumber" => next { favnumber: value }
+      "favNumber" => next { favNumber: value }
       "password1" => next { password1: value }
       "password2" => next { password2: value }
       => next { }
@@ -65,7 +65,7 @@ component ValidateInputs {
       <h3>"Your data please"</h3>
 
       // action="/"
-      <div onchange={update}>
+      <div onChange={update}>
         <p class="grid3">
           <label for="email">
             "E-Mail:"
@@ -91,17 +91,17 @@ component ValidateInputs {
 
           <{ showError("zip") }>
 
-          <label for="favnumber">
+          <label for="favNumber">
             "Fav Number:"
           </label>
 
           <input
-            name="favnumber"
+            name="favNumber"
             type="text"
             placeholder="0b101010"
-            value={favnumber}/>
+            value={favNumber}/>
 
-          <{ showError("favnumber") }>
+          <{ showError("favNumber") }>
 
           <label for="password1">
             "Password:"

@@ -71,25 +71,25 @@ component Dimensions {
       </p>
 
       <p>
-        <button onclick={() { scroll(0, 1) }}>
+        <button onClick={() { scroll(0, 1) }}>
           "Scroll bottom 1 px"
         </button>
 
         " "
 
-        <button onclick={() { scroll(0, -1) }}>
+        <button onClick={() { scroll(0, -1) }}>
           "Scroll top 1 px"
         </button>
 
         " "
 
-        <button onclick={() { scroll(1, 0) }}>
+        <button onClick={() { scroll(1, 0) }}>
           "Scroll right 1 px"
         </button>
 
         " "
 
-        <button onclick={() { scroll(-1, 0) }}>
+        <button onClick={() { scroll(-1, 0) }}>
           "Scroll left 1 px"
         </button>
       </p>

@@ -33,7 +33,7 @@ component Navigate {
       <h3>"We are #{title} "</h3>
 
       <p>
-        <button onclick={update}>
+        <button onClick={update}>
           if title != "here" {
             "go here"
           } else {
@@ -45,7 +45,7 @@ component Navigate {
       </p>
 
       <p>
-        <button onclick={() { Window.open("https://mint-lang.com/") }}>
+        <button onClick={() { Window.open("https://mint-lang.com/") }}>
           "Mint Homepage"
         </button>
 

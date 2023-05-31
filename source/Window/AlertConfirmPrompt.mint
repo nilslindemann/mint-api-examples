@@ -1,9 +1,9 @@
 component AlertConfirmPrompt {
-  state infotext = "Nothing clicked"
+  state infoText = "Nothing clicked"
 
   fun alertSomething {
     await Window.alert("Hello World")
-    next { infotext: "Hello World" }
+    next { infoText: "Hello World" }
   }
 
   fun confirmSomething {
@@ -16,7 +16,7 @@ component AlertConfirmPrompt {
         Result::Err => "Not hungry"
       }
 
-    next { infotext: text }
+    next { infoText: text }
   }
 
   fun promptSomething {
@@ -26,10 +26,10 @@ component AlertConfirmPrompt {
     let text =
       case words {
         Maybe::Just(value) => "You said: \"" + value + "\""
-        Maybe::Nothing => "You chanceled"
+        Maybe::Nothing => "You canceled"
       }
 
-    next { infotext: text }
+    next { infoText: text }
   }
 
   fun render {
@@ -37,25 +37,25 @@ component AlertConfirmPrompt {
       <h3>"Alert, confirm, prompt"</h3>
 
       <p>
-        <button onclick={alertSomething}>
+        <button onClick={alertSomething}>
           "Alert something"
         </button>
 
         " "
 
-        <button onclick={confirmSomething}>
+        <button onClick={confirmSomething}>
           "Confirm something"
         </button>
 
         " "
 
-        <button onclick={promptSomething}>
+        <button onClick={promptSomething}>
           "Say something"
         </button>
       </p>
 
       <p>
-        <{ infotext }>
+        <{ infoText }>
       </p>
     </section>
   }

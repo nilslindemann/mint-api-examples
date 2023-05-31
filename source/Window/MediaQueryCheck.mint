@@ -24,7 +24,7 @@ component MediaQueryCheck {
       <h4>"Check manually"</h4>
 
       <p>
-        <button onclick={check}>
+        <button onClick={check}>
           "Check"
         </button>
 

@@ -44,7 +44,7 @@ component PlayWithUrl {
 
         " "
 
-        <button onclick={reset}>
+        <button onClick={reset}>
           "Reset"
         </button>
       </p>

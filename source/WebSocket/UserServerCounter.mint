@@ -87,7 +87,7 @@ component UserServerCounter {
       if isReady {
         <>
           <div class="grid3">
-            <button onclick={() { addToCounter(-1) }}>
+            <button onClick={() { addToCounter(-1) }}>
               "-"
             </button>
 
@@ -98,7 +98,7 @@ component UserServerCounter {
               }>
             </span>
 
-            <button onclick={() { addToCounter(1) }}>
+            <button onClick={() { addToCounter(1) }}>
               "+"
             </button>
           </div>

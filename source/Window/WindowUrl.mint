@@ -1,17 +1,17 @@
 component WindowUrl {
   state url = Window.url()
 
-  fun seturlto (url : String) {
+  fun setUrlTo (url : String) {
     Window.setUrl(url)
     next { url: Window.url() }
   }
 
-  fun navigateto (url : String) {
+  fun navigateTo (url : String) {
     Window.navigate(url)
     next { url: Window.url() }
   }
 
-  fun jumpto (url : String) {
+  fun jumpTo (url : String) {
     Window.navigate(url)
     Window.triggerHashJump()
     next { url: Window.url() }
@@ -32,43 +32,43 @@ component WindowUrl {
       <div class="grid4">
         <span>"Set URL to"</span>
 
-        <button onclick={() { seturlto("#here") }}>
+        <button onClick={() { setUrlTo("#here") }}>
           "#here"
         </button>
 
-        <button onclick={() { seturlto("/") }}>
+        <button onClick={() { setUrlTo("/") }}>
           "/"
         </button>
 
-        <button onclick={() { seturlto("/a/b/c") }}>
+        <button onClick={() { setUrlTo("/a/b/c") }}>
           "/a/b/c"
         </button>
 
         <span>"Also update navigation history"</span>
 
-        <button onclick={() { navigateto("#here") }}>
+        <button onClick={() { navigateTo("#here") }}>
           "#here"
         </button>
 
-        <button onclick={() { navigateto("/") }}>
+        <button onClick={() { navigateTo("/") }}>
           "/"
         </button>
 
-        <button onclick={() { navigateto("/a/b/c") }}>
+        <button onClick={() { navigateTo("/a/b/c") }}>
           "/a/b/c"
         </button>
 
         <span>"Also jump there"</span>
 
-        <button onclick={() { jumpto("#here") }}>
+        <button onClick={() { jumpTo("#here") }}>
           "#here"
         </button>
 
-        <button onclick={() { jumpto("/") }}>
+        <button onClick={() { jumpTo("/") }}>
           "/"
         </button>
 
-        <button onclick={() { jumpto("/a/b/c") }}>
+        <button onClick={() { jumpTo("/a/b/c") }}>
           "/a/b/c"
         </button>
       </div>

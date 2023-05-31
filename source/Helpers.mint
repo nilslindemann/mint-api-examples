@@ -3,7 +3,7 @@ component GoTop {
     <p>
       <a
         href="/"
-        onclick={
+        onClick={
           (event : Html.Event) {
             Html.Event.preventDefault(event)
             Window.navigate("/")
