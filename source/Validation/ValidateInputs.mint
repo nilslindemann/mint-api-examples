@@ -7,10 +7,10 @@ component ValidateInputs {
   state errors : Map(String, Array(String)) = Map.empty()
 
   fun componentDidMount {
-    submit()
+    validate()
   }
 
-  fun submit {
+  fun validate {
     next
       {
         errors:
@@ -128,7 +128,7 @@ component ValidateInputs {
           <span/>
         </p>
 
-        <button onclick={submit}>
+        <button onClick={validate}>
           "Submit"
         </button>
       </div>
