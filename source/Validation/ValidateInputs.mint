@@ -61,8 +61,8 @@ component ValidateInputs {
   }
 
   fun render {
-    <section id="x">
       <h3>"Your data please"</h3>
+    <section>
 
       // action="/"
       <div onChange={update}>
