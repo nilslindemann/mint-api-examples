@@ -52,7 +52,7 @@ component ValidateInputs {
     }
   }
 
-  fun showError (inputName : String) {
+  fun validationInfo (inputName : String) {
     <span>
       if let Maybe::Just(message) = Validation.getFirstError(errors, inputName) {
         <{ message }>
@@ -76,7 +76,7 @@ component ValidateInputs {
             value={email}
             placeholder="you@example.com"/>
 
-          <{ showError("email") }>
+          <{ validationInfo("email") }>
 
           <label for="zip">
             "Zip:"
@@ -88,7 +88,7 @@ component ValidateInputs {
             placeholder="12345"
             value={zip}/>
 
-          <{ showError("zip") }>
+          <{ validationInfo("zip") }>
 
           <label for="favNumber">
             "Fav Number:"
@@ -100,7 +100,7 @@ component ValidateInputs {
             placeholder="0b101010"
             value={favNumber}/>
 
-          <{ showError("favNumber") }>
+          <{ validationInfo("favNumber") }>
 
           <label for="password1">
             "Password:"
@@ -112,7 +112,7 @@ component ValidateInputs {
             placeholder=""
             value={password1}/>
 
-          <{ showError("password1") }>
+          <{ validationInfo("password1") }>
 
           <label for="password2">
             " Again: "
