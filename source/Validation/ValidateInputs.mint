@@ -52,9 +52,9 @@ component ValidateInputs {
     }
   }
 
-  fun showError (what : String) {
+  fun showError (inputName : String) {
     <span>
-      if let Maybe::Just(message) = Validation.getFirstError(errors, what) {
+      if let Maybe::Just(message) = Validation.getFirstError(errors, inputName) {
         <{ message }>
       }
     </span>
