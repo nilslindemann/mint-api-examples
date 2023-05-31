@@ -64,7 +64,6 @@ component ValidateInputs {
     <section>
       <h3>"Please fill out this form"</h3>
 
-      // action="/"
       <div onChange={update}>
         <p class="grid3">
           <label for="email">
