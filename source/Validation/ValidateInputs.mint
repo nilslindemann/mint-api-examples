@@ -18,7 +18,7 @@ component ValidateInputs {
             [
               Validation.isNotBlank(email, {"email", "Please enter your e-mail."}),
               Validation.isValidEmail(email, {"email", "Not a valid e-mail address."}),
-              Validation.hasMinimumNumberOfCharacters(email, 7, {"email", "The e-mail too short."}),
+              Validation.hasMinimumNumberOfCharacters(email, 7, {"email", "The e-mail is too short."}),
               Validation.isNotBlank(zip, {"zip", "Please enter your zip code."}),
               Validation.isDigits(zip, {"zip", "The zip code can only contain digits."}),
               Validation.hasExactNumberOfCharacters(zip, 5, {"zip", "The zip code needs to have 5 digits."}),
