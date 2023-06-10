@@ -6,9 +6,10 @@ import json
 # `pip install websockets`
 import websockets
 
-#  The websockets docs are also the source for this code.
-# See https://websockets.readthedocs.io/en/stable/howto/quickstart.html#manage-application-state.
-# I modified the code slightly, to also let the server indepently send messages to the clients, to denote the full duplex nature of Websockets.
+# The websockets docs are also the source for this code. See
+# https://websockets.readthedocs.io/en/stable/howto/quickstart.html#manage-application-state.
+# I modified the code slightly, to also let the server independently send
+# messages to the clients, to denote the full duplex nature of websockets.
 
 USERS = set()
 COUNTER = 0
@@ -26,7 +27,8 @@ async def send(user, data, desc):
 
 
 async def server_messages():
-    # This is the place where we do serverside stuff and send messages to the connected clients, if needed.
+    # This is the place where we do server side stuff and send messages to the
+    # connected clients, if needed.
     global COUNTER
     while True:
         await asyncio.sleep(2)
@@ -50,7 +52,8 @@ async def handle_connection(user):
         await broadcast(USERS, len(USERS), "amount_users")
         await send(user, COUNTER, "counter")
         async for message in user:
-            # this is the place where we handle messages sent by a connected client. This is done indepently for each client.
+            # this is the place where we handle messages sent by a connected
+            # client. This is done independently for each client.
             data, desc = parse(message)
             match desc:
                 case "update_counter":
