@@ -1,6 +1,6 @@
 # Mint API Examples
 
-(Work in progress)
+(Work in progress, currently paused)
 
 These are (unofficial) examples for the [Mint Language](https://mint-lang.com/). The goals are:
 
